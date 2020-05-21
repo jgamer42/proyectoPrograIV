@@ -5,4 +5,6 @@ import sys
 class Persona_natural(Vista_base):
     def __init__(self):
         super().__init__()
-        Button(self.frame,text="graficar").grid(row = 1,column=1)
+        Label(self.frame,text="graficar").grid(row = 0,column=0)
+        Button(self.frame,text="consumo agua").grid(row = 1,column=0)
+        Button(self.frame,text="consumo energia").grid(row = 2,column=0)
