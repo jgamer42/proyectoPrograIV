@@ -1,8 +1,8 @@
 from conexion2 import singelton
-class datoBase():
-	def __init__(self, fecha, consumo):
-		self.consumo = consumo
-		self.fecha = fecha
+class Dato():
+	def __init__(self):
+		self.consumo = None
+		self.fecha = None
 		self.lista_observadores = []
 		self.estado = None
 		self.conexion = singelton().singelton()
@@ -17,3 +17,13 @@ class datoBase():
 	def notificar(self):
 		for observador in self.lista_observadores:
 			observador.notificar()
+
+	def printer(self):
+		print(self.fecha,self.consumo)
+	
+	def insertar(self,fecha,consumo):
+		self.set_estado("nuevo dato")
+		self.fecha = fecha
+		self.consumo = consumo
+		self.printer()
+		
