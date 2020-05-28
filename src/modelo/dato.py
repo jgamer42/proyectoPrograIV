@@ -25,5 +25,6 @@ class Dato():
 		self.set_estado("nuevo dato")
 		self.fecha = fecha
 		self.consumo = consumo
+		self.conexion.insertar(fecha,consumo)
 		self.printer()
 		

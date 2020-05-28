@@ -1,5 +1,7 @@
 from tkinter import *
+import sqlite3 
 from src.controlador import controlador
+
 
 ventana = Tk() 
 ventana.title('proyecto progra') 
@@ -12,3 +14,12 @@ Button(contenedor,text = "Insertar",command=lambda:(controlador.buscar_archivo()
 Button(contenedor,text = "salir",command = exit).grid(column=1,row=5) 
 contenedor.pack()
 ventana.mainloop()
+base_datos = sqlite3.connect("mediciones")
+puntero = base_datos.cursor()
+try:
+    puntero.execute("DROP TABLE auxiliar")
+    print("tabla borrada")
+except:
+    print("no se encontro la tabla")
+base_datos.close()
+
