@@ -10,12 +10,7 @@ class  conexion():
         except:
             pass
         conexion.close()
-    def foo(self):
-        return id(self)
 
-    def printer(self):
-        print("hola")
-    
     def insertar(fecha_dato,consumo_dato):
         entrada_BD = sqlite3.connect("mediciones")
         puntero = entrada_BD.cursor()
@@ -27,6 +22,55 @@ class  conexion():
         except:
             print("algo salio mal")
         entrada_BD.close()
+    
+    def consultar_mes_agua(tabla):
+        print("mes agua")
+        entrada_BD = sqlite3.connect("mediciones")
+        puntero = entrada_BD.cursor()
+        if(tabla == "natural"):
+            puntero.execute("SELECT * FROM agua_residencial WHERE fecha LIKE '%%/05/2020 %%' ")
+        else:
+            puntero.execute("SELECT * FROM agua_comercial WHERE fecha LIKE '%%/05/2020 %%' ")
+        datos = puntero.fetchall()
+        entrada_BD.close()
+        return(datos)
+    
+    def consultar_dia_agua(tabla):
+        print("dia agua")
+        entrada_BD = sqlite3.connect("mediciones")
+        puntero = entrada_BD.cursor()
+        if(tabla == "natural"):
+            puntero.execute("SELECT * FROM agua_residencial WHERE fecha LIKE '16/05/2020 %%' ")
+        else:
+            puntero.execute("SELECT * FROM agua_comercial WHERE fecha LIKE '16/05/2020 %%' ")
+        datos = puntero.fetchall()
+        entrada_BD.close()
+        return(datos)
+    
+    def consultar_mes_energia(tabla):
+        print("mes energia")
+        entrada_BD = sqlite3.connect("mediciones")
+        puntero = entrada_BD.cursor()
+        if(tabla == "natural"):
+            puntero.execute("SELECT * FROM energia_residencial WHERE fecha LIKE '%%/05/2020 %%' ")
+        else:
+            puntero.execute("SELECT * FROM energia_comercial WHERE fecha LIKE '%%/05/2020 %%' ")
+        datos = puntero.fetchall()
+        entrada_BD.close()
+        return(datos)
+    
+    def consultar_dia_energia(tabla):
+        print("dia energia")
+        entrada_BD = sqlite3.connect("mediciones")
+        puntero = entrada_BD.cursor()
+        if(tabla == "natural"):
+            puntero.execute("SELECT * FROM energia_residencial WHERE fecha LIKE '16/05/2020 %%' ")
+        else:
+            puntero.execute("SELECT * FROM energia_comercial WHERE fecha LIKE '16/05/2020 %%' ")
+        datos = puntero.fetchall()
+        entrada_BD.close()
+        return(datos)
+
 
 class singelton():
     def __init__(self):
